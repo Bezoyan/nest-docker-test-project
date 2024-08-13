@@ -53,7 +53,7 @@ jobs:
     steps:
       - name: Deploy to Development Server
         run: |
-          ssh user@dev-server "docker pull ${{ secrets.DOCKER_USERNAME }}/my-nest-app:${{ github.sha }} && docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/my-nest-app:${{ github.sha }}"
+          docker pull ${{ secrets.DOCKER_USERNAME }}/my-nest-app:${{ github.sha }} && docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/my-nest-app:${{ github.sha }}
 
   deploy_prod:
     runs-on: ubuntu-latest
@@ -63,4 +63,4 @@ jobs:
     steps:
       - name: Deploy to Production Server
         run: |
-          ssh user@prod-server "docker pull ${{ secrets.DOCKER_USERNAME }}/my-nest-app:${{ github.sha }} && docker run -d -p 3000:3000 ${{ secrets.DOCKER_USERNAME }}/my-nest-app:${{ github.sha }}"
+          docker pull ${{ secrets.DOCKER_USERNAME }}/my-nest-app:${{ github.sha }} && docker run -d -p 4000:3000 ${{ secrets.DOCKER_USERNAME }}/my-nest-app:${{ github.sha }}
